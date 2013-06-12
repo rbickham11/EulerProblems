@@ -20,12 +20,12 @@ namespace EulerProblems
             EulerProblems euler = new EulerProblems();
             euler.stopWatch = new Stopwatch();
 
-            //euler.problem1();
-            //euler.problem2();
-            //euler.problem3();
-            //euler.problem4();
-            //euler.problem5();
-            //euler.problem6();
+            euler.problem1();
+            euler.problem2();
+            euler.problem3();
+            euler.problem4();
+            euler.problem5();
+            euler.problem6();
             euler.problem7();
 
             Console.ReadKey();
