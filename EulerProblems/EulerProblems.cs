@@ -20,11 +20,14 @@ namespace EulerProblems
             EulerProblems euler = new EulerProblems();
             euler.stopWatch = new Stopwatch();
 
-            euler.problem1();
-            euler.problem2();
-            euler.problem3();
-            euler.problem4();
-            euler.problem5();
+            //euler.problem1();
+            //euler.problem2();
+            //euler.problem3();
+            //euler.problem4();
+            //euler.problem5();
+            //euler.problem6();
+            euler.problem7();
+
             Console.ReadKey();
         }
         public void problem1()  //Find the sum of all the multiples of 3 or 5 below 1000.
@@ -172,12 +175,13 @@ namespace EulerProblems
         {
             stopWatch.Restart();
 
-            Console.Write("Problem 5: ");
             int maxMultiple = 20;
             int num = maxMultiple * 2;
 
             List<int> multiples = new List<int>();
-            
+
+            Console.Write("Problem 5: ");
+
             for(int i = 0; i <= maxMultiple; i++)
                 multiples.Add(i);
 
@@ -209,9 +213,67 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
+        public void problem6() //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+        {
+            stopWatch.Restart();
+
+            limit = 100;
+            long sumsq = 0;
+            
+            long sqsum = (limit * (limit + 1)) / 2;
+
+            Console.Write("Problem 6: ");
+
+            for (int i = 1; i <= limit; i++)
+                sumsq += (i * i);
+            
+            
+            sqsum = sqsum * sqsum;
+
+            Console.Write(sqsum-sumsq);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem7()
+        {
+            stopWatch.Restart();
+
+            limit = 10001;
+            
+            int num = 2;
+            int primeCount = 0;
+            int i;
+            bool breakBoth = false;
+
+            Console.Write("Problem 7: ");
+
+            while (primeCount < limit)
+            {
+                for (i = 2; i < num; i++)
+                {
+                    if (num % i == 0)
+                    {
+                        breakBoth = true;
+                        break;
+                    }
+                if (breakBoth) break;
+                
+                }
+                if (!breakBoth)
+                    primeCount++;
+                num++;
+                breakBoth = false;
+            }
+            Console.Write(num - 1);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
         public void problem()  
         {
             stopWatch.Restart();
+           
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
