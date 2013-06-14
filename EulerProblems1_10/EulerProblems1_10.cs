@@ -6,28 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace EulerProblems
+namespace EulerProblems1_10
 {
-    class EulerProblems
+    class EulerProblems1_10
     {
-        private int i;
-        private int sum;
+        private long sum;
         private long limit;
         private Stopwatch stopWatch;
 
         static void Main(string[] args)
         {
-            EulerProblems euler = new EulerProblems();
+            EulerProblems1_10 euler = new EulerProblems1_10();
             euler.stopWatch = new Stopwatch();
 
-            //euler.problem1();
-            //euler.problem2();
-            //euler.problem3();
-            //euler.problem4();
-            //euler.problem5();
-            //euler.problem6();
-            //euler.problem7();
+            euler.problem1();
+            euler.problem2();
+            euler.problem3();
+            euler.problem4();
+            euler.problem5();
+            euler.problem6();
+            euler.problem7();
             euler.problem8();
+            euler.problem9(); 
+            euler.problem10();
+
 
             Console.ReadKey();
         }
@@ -39,7 +41,7 @@ namespace EulerProblems
 
             Console.Write("Problem 1: ");
 
-            for (i = 0; i < limit; i++)
+            for (int i = 0; i < limit; i++)
             {
                 if ((i % 3 == 0) || (i % 5 == 0))
                     sum = sum + i;           
@@ -175,7 +177,7 @@ namespace EulerProblems
         public void problem5()  //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
         {
             stopWatch.Restart();
-
+            int i;
             int maxMultiple = 20;
             int num = maxMultiple * 2;
 
@@ -183,10 +185,10 @@ namespace EulerProblems
 
             Console.Write("Problem 5: ");
 
-            for(int i = 0; i <= maxMultiple; i++)
+            for( i = 0; i <= maxMultiple; i++)
                 multiples.Add(i);
 
-            for (int i = maxMultiple; i > maxMultiple / 2; i--)
+            for (i = maxMultiple; i > maxMultiple / 2; i--)
             {
                 for (int j = 2; j <= i / 2; j++)
                     if (i % j == 0)
@@ -194,6 +196,8 @@ namespace EulerProblems
             }
             multiples.Remove(0);
             multiples.Remove(1);
+            
+            i = 0;
 
             while (true)
             {
@@ -236,7 +240,7 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public void problem7()
+        public void problem7() //What is the 10001st prime number?
         {
             stopWatch.Restart();
 
@@ -319,13 +323,83 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public void problem()  
+        public void problem9() //There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc.
         {
             stopWatch.Restart();
-           
+
+            limit = 1000;
+            int i;
+            int product = 0;
+            bool breakAll = false;
+
+            Console.Write("Problem 9: ");
+
+            for(int a = 0; a < limit; a++)
+            {
+                if (a % 3 == 0 || a % 4 == 0 || a % 5 == 0)
+                {
+                    if (a % 2 == 0)
+                        i = 1;
+                    else
+                        i = 2;
+
+                    for (int b = i; b < limit; b += 2)
+                    {
+                        if (b % 3 == 0 || b % 4 == 0 || b % 5 == 0)
+                        {
+                            for (int c = 1; c < limit; c += 2)
+                            {
+                                if (c % 3 == 0 || c % 4 == 0 || c % 5 == 0)
+                                {
+                                    if (c > b && c > a)
+                                    {
+                                        if ((Math.Pow(a, 2) + Math.Pow(b, 2)) == Math.Pow(c, 2))
+                                            if (a + b + c == limit)
+                                            {
+                                                product = a * b * c;
+                                                breakAll = true;
+                                                break;
+                                            }
+                                    }
+                                }
+                            }
+                            if (breakAll) break;
+                        }   
+                    }
+                    if (breakAll) break;
+                }
+            }
+
+            Console.Write(product);
+
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-    }
+        public void problem10()   //Find the sum of all the primes below two million.
+        {
+            stopWatch.Restart();
+            int primeLimit = 2000000;
+            sum = 2;
+
+            Console.Write("Problem 10: ");
+
+            BitArray notPrime = new BitArray(primeLimit);
+            notPrime.Set(2, false);
+
+            for (int i = 3; i < primeLimit; i += 2)
+            {
+                if (!notPrime.Get(i))
+                    sum += i;
+
+                for (int j = 2 * i; j < primeLimit; j += i)
+                    notPrime.Set(j, true);
+            }
+
+            Console.Write(sum);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+   }
 }

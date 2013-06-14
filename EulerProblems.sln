@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerProblems", "EulerProblems\EulerProblems.csproj", "{CE0C7883-F254-4129-A87E-D7FE0EC4F5DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerProblems1_10", "EulerProblems1_10\EulerProblems1_10.csproj", "{CE0C7883-F254-4129-A87E-D7FE0EC4F5DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerProblems11_20", "EulerProblems11_20\EulerProblems11_20.csproj", "{B50D4BDF-BB27-4640-A252-F1145A2DFE04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{CE0C7883-F254-4129-A87E-D7FE0EC4F5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE0C7883-F254-4129-A87E-D7FE0EC4F5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE0C7883-F254-4129-A87E-D7FE0EC4F5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50D4BDF-BB27-4640-A252-F1145A2DFE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50D4BDF-BB27-4640-A252-F1145A2DFE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50D4BDF-BB27-4640-A252-F1145A2DFE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50D4BDF-BB27-4640-A252-F1145A2DFE04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
