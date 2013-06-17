@@ -20,6 +20,7 @@ namespace EulerProblems11_20
             euler.stopWatch = new Stopwatch();
 
             euler.problem11();
+            euler.problem12();
             Console.ReadKey();
         }
 
@@ -27,7 +28,7 @@ namespace EulerProblems11_20
         {
             stopWatch.Restart();
 
-            int i, j, k;
+            int i, j;
             int product = 1;
             int maxProduct = 0;
             string numTable =
@@ -52,7 +53,7 @@ namespace EulerProblems11_20
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
 
-            Console.Write("Problem11: ");
+            Console.Write("Problem 11: ");
 
             string[] lines = numTable.Split('\n');
             string[] nums = lines[0].Split(' ');
@@ -128,6 +129,69 @@ namespace EulerProblems11_20
                 maxProduct = product;
             product = table[i, j];
         }
+
+        public void problem12()  //What is the value of the first triangle number to have over five hundred divisors?
+        {
+            stopWatch.Restart();
+
+            limit = 500;
+            long n = limit;
+            int nDivs, n1Divs;
+            long triangle;
+
+            Console.Write("Problem 12: ");
+
+            nDivs = numDivisors(n);
+            n1Divs = numDivisors(n + 1);
+
+            while (nDivs * n1Divs <= limit)
+            {
+                n++;
+                nDivs = n1Divs;
+                n1Divs = numDivisors(n + 1);
+            }
+
+            triangle = (n * (n + 1)) / 2;
+            Console.Write(triangle);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public int numDivisors(long n)
+        {
+            int divCount = 1;
+            int i = 0;
+            int j = 3;
+
+            if (n % 2 == 0)
+            {
+                n /= 2;
+                while (n % 2 == 0)
+                {
+                    i++;
+                    n /= 2;
+                }
+
+                divCount *= (i + 1);
+            }
+
+            while (n != 1)
+            {
+                i = 0;
+                while (n % j == 0)
+                {
+                    i++;
+                    n /= j;
+                }
+                
+                divCount *= (i + 1);
+                j += 2;
+            }
+
+            return divCount;
+
+        }
+
         public void problem()
         {
             stopWatch.Restart();
