@@ -22,6 +22,9 @@ namespace EulerProblems11_20
             euler.problem11();
             euler.problem12();
             euler.problem13();
+            euler.problem14();
+            euler.problem15();
+            euler.problem16();
             Console.ReadKey();
         }
 
@@ -317,12 +320,88 @@ namespace EulerProblems11_20
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
+        public void problem14() //Which starting number, under one million, produces the longest collatz sequence?
+        {
+            stopWatch.Restart();
+
+            limit = 1000000;
+            long term;
+            int termCount = 0;
+            int maxCount = 0;
+            int highChain = 0;
+
+            Console.Write("Problem 14: ");
+           
+            for (int i = 2; i < limit; i++)
+            {
+                term = i;
+                termCount = 0;
+                while (term != 1)
+                {
+                    if (term % 2 == 0)
+                        term /= 2;
+                    else
+                        term = 3 * term + 1;
+                    termCount++;
+                }
+               
+                if (termCount > maxCount)
+                {
+                    maxCount = termCount;
+                    highChain = i;
+                }
+            }
+
+            Console.Write(highChain);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem15() //Starting in the top left corner of a 2x2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
+        {                       //How many such routes are there through a 20x20 grid?
+            stopWatch.Restart();
+
+            limit = 20;
+            long[,] grid = new long[limit + 1, limit + 1];
+            int i, j;
+        
+            Console.Write("Problem 15: ");
+            for (i = 0; i <= limit; i++)
+            {
+                grid[i, 0] = 1;
+                grid[0, i] = 1;
+            }
+
+            for (i = 1; i <= limit; i++)
+                for (j = 1; j <= limit; j++)
+                    grid[i, j] = grid[i - 1, j] + grid[i, j - 1];
+
+            Console.Write(grid[limit, limit]);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem16()
+        {
+            stopWatch.Restart();
+
+            limit = 1000;
+            string resString;
+
+            Console.Write("Problem 16: ");
+
+            resString = Math.Pow(2, limit).ToString();
+
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
         public void problem()
         {
             stopWatch.Restart();
 
             Console.Write("Problem: ");
-
+            
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
