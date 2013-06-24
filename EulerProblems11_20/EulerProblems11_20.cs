@@ -19,12 +19,13 @@ namespace EulerProblems11_20
             EulerProblems11_20 euler = new EulerProblems11_20();
             euler.stopWatch = new Stopwatch();
 
-            euler.problem11();
-            euler.problem12();
-            euler.problem13();
-            euler.problem14();
-            euler.problem15();
-            euler.problem16();
+            //euler.problem11();
+            //euler.problem12();
+            //euler.problem13();
+            //euler.problem14();
+            //euler.problem15();
+            //euler.problem16();
+            euler.problem17();
             Console.ReadKey();
         }
 
@@ -381,17 +382,105 @@ namespace EulerProblems11_20
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public void problem16()
+        public void problem16() //What is the sum of the digits of the number 2^1000?
         {
             stopWatch.Restart();
 
             limit = 1000;
-            string resString;
+            int i, carry, product;
+            int digitSum = 0;
+            int listSize = (int)Math.Ceiling(limit * Math.Log10(2));
+            int[] digitList = new int[listSize];
 
             Console.Write("Problem 16: ");
 
-            resString = Math.Pow(2, limit).ToString();
+            digitList[0] = 1;
 
+            for (i = 1; i < limit + 1; i++)
+            {
+                carry = 0;
+                for (int j = 0; j < listSize; j++)
+                {
+                    product = digitList[j] * 2 + carry;
+                    if (product > 9)
+                    {
+                        carry = 1;
+                        product %= 10;
+                    }
+                    else
+                        carry = 0;
+                    digitList[j] = product;
+                }
+
+            }
+
+            for (i = 0; i < listSize; i++)
+                digitSum += digitList[i];
+
+            Console.Write(digitSum);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem17() //If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
+        {
+            stopWatch.Restart();
+
+            limit = 1000;  //100 Minimum
+            int[] nums = new int[limit + 1];
+            int letterSum = 0;
+            int i, j, k;
+            
+            Console.Write("Problem 17: ");
+
+            nums[1] = 3; nums[2] = 3; nums[3] = 5; nums[4] = 4; nums[5] = 4;nums[6] = 3;nums[7] = 5;nums[8] = 5;nums[9] = 4;
+            nums[10] = 3; nums[11] = 11; nums[12] = 6; nums[13] = 8; nums[14] = 8; nums[15] = 7; nums[16] = 7; nums[17] = 9; nums[18] = 8; nums[19] = 8;
+            nums[20] = 6; nums[30] = 6; nums[40] = 5; nums[50] = 5; nums[60] = 5; nums[70] = 7; nums[80] = 6; nums[90] = 6;
+
+            for (i = 1; i < 20; i++)
+            {
+                letterSum += nums[i];
+            }
+            for (i = 21; i < 100; i++)
+            {
+                j = i;
+                while (j > 9)
+                    j /= 10;
+                letterSum += nums[j * 10];
+                
+                j = i % 10;
+                letterSum += nums[j];
+            }
+
+            int hundred = 7;
+            int and = 3;
+
+            if (limit >= 100)
+            {
+                for (i = 100; i < 1000; i++)
+                {
+                    j = i;
+                    while (j > 9)
+                        j /= 10;
+                    letterSum += nums[j];
+                    letterSum += hundred;
+                    
+                    j = i % 100;
+                    k = j % 10;
+ 
+                    if (j == 0)
+                        continue;
+                    
+                    letterSum += and;
+                    while (j > 9)
+                        j /= 10;
+                    letterSum += nums[j * 10];
+                    letterSum += nums[k];
+                }
+            }
+            letterSum += 11; //One Thousand
+
+            Console.Write(letterSum);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
