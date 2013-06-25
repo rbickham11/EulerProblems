@@ -19,12 +19,12 @@ namespace EulerProblems11_20
             EulerProblems11_20 euler = new EulerProblems11_20();
             euler.stopWatch = new Stopwatch();
 
-            //euler.problem11();
-            //euler.problem12();
-            //euler.problem13();
-            //euler.problem14();
-            //euler.problem15();
-            //euler.problem16();
+            euler.problem11();
+            euler.problem12();
+            euler.problem13();
+            euler.problem14();
+            euler.problem15();
+            euler.problem16();
             euler.problem17();
             Console.ReadKey();
         }
@@ -426,22 +426,22 @@ namespace EulerProblems11_20
         {
             stopWatch.Restart();
 
-            limit = 1000;  //100 Minimum
-            int[] nums = new int[limit + 1];
+            limit = 1000;
+            int[] nums = new int[91];
             int letterSum = 0;
             int i, j, k;
             
             Console.Write("Problem 17: ");
 
-            nums[1] = 3; nums[2] = 3; nums[3] = 5; nums[4] = 4; nums[5] = 4;nums[6] = 3;nums[7] = 5;nums[8] = 5;nums[9] = 4;
-            nums[10] = 3; nums[11] = 11; nums[12] = 6; nums[13] = 8; nums[14] = 8; nums[15] = 7; nums[16] = 7; nums[17] = 9; nums[18] = 8; nums[19] = 8;
+            nums[1] = 3; nums[2] = 3; nums[3] = 5; nums[4] = 4; nums[5] = 4; nums[6] = 3; nums[7] = 5; nums[8] = 5; nums[9] = 4;
+            nums[10] = 3; nums[11] = 6; nums[12] = 6; nums[13] = 8; nums[14] = 8; nums[15] = 7; nums[16] = 7; nums[17] = 9; nums[18] = 8; nums[19] = 8;
             nums[20] = 6; nums[30] = 6; nums[40] = 5; nums[50] = 5; nums[60] = 5; nums[70] = 7; nums[80] = 6; nums[90] = 6;
 
             for (i = 1; i < 20; i++)
             {
                 letterSum += nums[i];
             }
-            for (i = 21; i < 100; i++)
+            for (i = 20; i < 100; i++)
             {
                 j = i;
                 while (j > 9)
@@ -455,29 +455,32 @@ namespace EulerProblems11_20
             int hundred = 7;
             int and = 3;
 
-            if (limit >= 100)
+            for (i = 100; i < limit; i++)
             {
-                for (i = 100; i < 1000; i++)
-                {
-                    j = i;
-                    while (j > 9)
-                        j /= 10;
-                    letterSum += nums[j];
-                    letterSum += hundred;
+                j = i;
+                while (j > 9)
+                    j /= 10;
+                letterSum += nums[j];
+                letterSum += hundred;
                     
-                    j = i % 100;
-                    k = j % 10;
+                j = i % 100;
  
-                    if (j == 0)
-                        continue;
+                if (j == 0)
+                    continue;
                     
-                    letterSum += and;
+                letterSum += and;
+                if (j < 20)
+                    letterSum += nums[j];
+                else
+                {
+                    k = j % 10;
                     while (j > 9)
                         j /= 10;
                     letterSum += nums[j * 10];
                     letterSum += nums[k];
                 }
             }
+           
             letterSum += 11; //One Thousand
 
             Console.Write(letterSum);
