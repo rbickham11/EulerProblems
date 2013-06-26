@@ -42,10 +42,9 @@ namespace EulerProblems1_10
             Console.Write("Problem 1: ");
 
             for (int i = 0; i < limit; i++)
-            {
                 if ((i % 3 == 0) || (i % 5 == 0))
-                    sum = sum + i;           
-            }
+                    sum += i;           
+           
             Console.Write(sum);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
@@ -185,7 +184,7 @@ namespace EulerProblems1_10
 
             Console.Write("Problem 5: ");
 
-            for( i = 0; i <= maxMultiple; i++)
+            for(i = 0; i <= maxMultiple; i++)
                 multiples.Add(i);
 
             for (i = maxMultiple; i > maxMultiple / 2; i--)
@@ -197,16 +196,12 @@ namespace EulerProblems1_10
             multiples.Remove(0);
             multiples.Remove(1);
             
-            i = 0;
-
             while (true)
             {
-                while (i < multiples.Count)
-                {
+                for (i = 0; i < multiples.Count; i++)
                     if (num % multiples[i] != 0)
                         break;
-                    i++;
-                }
+                
                 if (i == multiples.Count)
                     break;
                 i = 0;
@@ -262,8 +257,7 @@ namespace EulerProblems1_10
                         breakBoth = true;
                         break;
                     }
-                if (breakBoth) break;
-                
+                    if (breakBoth) break;
                 }
                 if (!breakBoth)
                     primeCount++;

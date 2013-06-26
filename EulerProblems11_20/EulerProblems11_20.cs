@@ -438,9 +438,8 @@ namespace EulerProblems11_20
             nums[20] = 6; nums[30] = 6; nums[40] = 5; nums[50] = 5; nums[60] = 5; nums[70] = 7; nums[80] = 6; nums[90] = 6;
 
             for (i = 1; i < 20; i++)
-            {
                 letterSum += nums[i];
-            }
+            
             for (i = 20; i < 100; i++)
             {
                 j = i;
