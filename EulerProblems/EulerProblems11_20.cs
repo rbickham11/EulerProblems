@@ -26,6 +26,8 @@ namespace EulerProblems
             problem16();
             problem17();
             problem18();
+            problem19();
+            problem20();
         }
 
         public void problem11() //What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20x20 grid?
@@ -522,12 +524,58 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public void problem()
+        public void problem19() //How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
         {
             stopWatch.Restart();
 
-            Console.Write("Problem: ");
+            int sundays = 0;
+            int year, month;
+
+            Console.Write("Problem 19: ");
+
+            for (year = 1901; year < 2001; year++)
+                for (month = 1; month <= 12; month++)
+                    if (new DateTime(year, month, 1).DayOfWeek == DayOfWeek.Sunday)
+                        sundays++;
+
+            Console.Write(sundays);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem20() //Find the sum of the digits in the number 100!
+        {
+            stopWatch.Restart();
+
+            limit = 100;
+            int i, carry, product;
+            int digitSum = 0;
             
+            double pi = Math.PI;
+            double e = Math.E;
+            int listSize = (int)(((Math.Log10(2 * pi * limit)) / 2) + (limit * Math.Log10(limit / e)) + 1);
+            
+            int[] digitList = new int[listSize];
+
+            Console.Write("Problem 20: ");
+
+            digitList[0] = 1;
+
+            for (i = 2; i <= limit; i++)
+            {
+                carry = 0;
+                for (int j = 0; j < listSize; j++)
+                {
+
+                }
+
+            }
+
+            for (i = 0; i < listSize; i++)
+                digitSum += digitList[i];
+
+            Console.Write(digitSum);
+
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
