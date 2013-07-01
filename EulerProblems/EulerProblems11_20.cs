@@ -5,28 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
 
-namespace EulerProblems11_20
+
+namespace EulerProblems
 {
-    class EulerProblems11_20
+    public class EulerProblems11_20
     {
         private long sum;
         private long limit;
-        private Stopwatch stopWatch;
+        private Stopwatch stopWatch = new Stopwatch();
 
-        static void Main(string[] args)
+        public void runAll()
         {
-            EulerProblems11_20 euler = new EulerProblems11_20();
-            euler.stopWatch = new Stopwatch();
-
-            euler.problem11();
-            euler.problem12();
-            euler.problem13();
-            euler.problem14();
-            euler.problem15();
-            euler.problem16();
-            euler.problem17();
-            Console.ReadKey();
+            problem11();
+            problem12();
+            problem13();
+            problem14();
+            problem15();
+            problem16();
+            problem17();
+            problem18();
         }
 
         public void problem11() //What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20x20 grid?
@@ -483,6 +482,42 @@ namespace EulerProblems11_20
             letterSum += 11; //One Thousand
 
             Console.Write(letterSum);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem18() //Find the maximum total from top to bottom of the triangle
+        {
+            stopWatch.Restart();
+
+            int numLines = 15;
+            int[,] pyramid = new int[numLines, numLines];
+            int i, j;
+            string[] nums;
+
+            Console.Write("Problem 18: ");
+
+            using (StreamReader sr = new StreamReader("pyramid.txt"))
+            {
+                for (i = 0; i < numLines; i++)
+                {
+                    nums = sr.ReadLine().Split(' ');
+                    for (j = 0; j <= i; j++)
+                        pyramid[i, j] = Convert.ToInt32(nums[j]);    
+                }
+            }
+
+            for (i = numLines - 2; i >= 0; i--)
+            {
+                for (j = 0; j < numLines; j++)
+                {
+                    if (pyramid[i, j] == 0)
+                        break;
+                    pyramid[i, j] += Math.Max(pyramid[i + 1, j], pyramid[i + 1, j + 1]);
+                }
+            }
+
+            Console.Write(pyramid[0, 0]);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }

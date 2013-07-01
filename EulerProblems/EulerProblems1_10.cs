@@ -6,33 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace EulerProblems1_10
+namespace EulerProblems
 {
-    class EulerProblems1_10
+    public class EulerProblems1_10
     {
         private long sum;
         private long limit;
-        private Stopwatch stopWatch;
+        private Stopwatch stopWatch = new Stopwatch();
 
-        static void Main(string[] args)
+        public void runAll()
         {
-            EulerProblems1_10 euler = new EulerProblems1_10();
-            euler.stopWatch = new Stopwatch();
-
-            euler.problem1();
-            euler.problem2();
-            euler.problem3();
-            euler.problem4();
-            euler.problem5();
-            euler.problem6();
-            euler.problem7();
-            euler.problem8();
-            euler.problem9(); 
-            euler.problem10();
-
-
-            Console.ReadKey();
+            problem1();
+            problem2();
+            problem3();
+            problem4();
+            problem5();
+            problem6();
+            problem7();
+            problem8();
+            problem9();
+            problem10();
         }
+
         public void problem1()  //Find the sum of all the multiples of 3 or 5 below 1000.
         {
             stopWatch.Restart();
