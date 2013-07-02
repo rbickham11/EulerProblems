@@ -14,8 +14,8 @@ namespace EulerProblems
             var eu11 = new EulerProblems11_20();
             var eu61 = new EulerProblems61_70();
 
-            eu11.problem19();
-            eu11.problem20();
+
+            eu11.runAll();
             Console.ReadKey();
         }
     }

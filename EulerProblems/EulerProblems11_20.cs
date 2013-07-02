@@ -554,7 +554,7 @@ namespace EulerProblems
             double pi = Math.PI;
             double e = Math.E;
             int listSize = (int)(((Math.Log10(2 * pi * limit)) / 2) + (limit * Math.Log10(limit / e)) + 1);
-            
+
             int[] digitList = new int[listSize];
 
             Console.Write("Problem 20: ");
@@ -566,16 +566,24 @@ namespace EulerProblems
                 carry = 0;
                 for (int j = 0; j < listSize; j++)
                 {
+                    product = digitList[j] * i + carry;
 
+                    if (product > 9)
+                    {
+                        carry = product / 10;
+                        product %= 10;
+                    }
+                    else
+                        carry = 0;
+                    digitList[j] = product;
                 }
 
             }
 
-            for (i = 0; i < listSize; i++)
+            for (i = listSize - 1; i >= 0; i--)
                 digitSum += digitList[i];
 
             Console.Write(digitSum);
-
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
