@@ -44,6 +44,7 @@
     <Compile Include="EulerMain.cs" />
     <Compile Include="EulerProblems11_20.cs" />
     <Compile Include="EulerProblems1_10.cs" />
+    <Compile Include="EulerProblems21_30.cs" />
     <Compile Include="EulerProblems61_70.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +52,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="names.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="pyramid.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
