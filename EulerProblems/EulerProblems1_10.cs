@@ -75,17 +75,13 @@ namespace EulerProblems
             Console.Write("Problem 3: ");
 
             int max = 1;
-            List<long> PrimeFactors = new List<long>();
             int loopMax = (int)Math.Sqrt(limit) + 10;
 
             BitArray bitArr = new BitArray(loopMax);
             bitArr.Set(2, false);
                 
             if (limit % 2 == 0)
-            {
                 limit /= 2;
-                PrimeFactors.Add(2);
-            }
 
             for (int i = 3; i < loopMax; i += 2)
             {
@@ -96,7 +92,6 @@ namespace EulerProblems
                         if (limit % i == 0)
                         {
                             limit /= i;
-                            PrimeFactors.Add(i);
                             max = i;
                         }
                         else break;
