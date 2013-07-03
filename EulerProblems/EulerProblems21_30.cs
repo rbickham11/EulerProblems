@@ -17,6 +17,8 @@ namespace EulerProblems
             problem21();
             problem22();
             problem23();
+            problem24();
+            problem25();
         }
 
         public void problem21() //Evaluate the sum of all the amicable numbers under 10000.
@@ -37,10 +39,7 @@ namespace EulerProblems
                 {
                     n2Sum = sumDivisors(n2);
                     if (n2Sum == n1)
-                    {
-                        Console.WriteLine(n1 + " " + n2);
                         amSum += (n1 + n2);
-                    }
                 }
             }
 
@@ -96,7 +95,7 @@ namespace EulerProblems
 
             limit = 28123;
             List<int> abNums = new List<int>();
-            int i, j;
+            int i;
             int sum = 0;
             BitArray isSum = new BitArray((int)limit + 1);
 
@@ -123,6 +122,56 @@ namespace EulerProblems
 
             Console.Write(sum);
             stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem24() //What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+        {
+            stopWatch.Restart();
+
+            limit = 1000000;
+            List<int> nums = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int i;
+            int maxP = factorial(10);
+            int currentP = 0;
+            int digitCount = 0;
+
+            Console.Write("Problem 24: ");
+
+            for(i = 10; i >= 1; i--)
+            {
+                maxP /= i;
+                while (currentP < limit)
+                {
+                    currentP += maxP;
+                    digitCount++;
+                }
+
+                currentP -= maxP;
+                
+                Console.Write(nums[digitCount - 1]);
+                nums.RemoveAt(digitCount - 1);
+                digitCount = 0;
+            }
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public int factorial(int n)
+        {
+            if (n < 1)
+                return 1;
+            else
+                return n * factorial(n - 1);
+        }
+
+        public void problem25() //What is the first term in the Fibonacci sequence to contain 1000 digits?
+        {
+            stopWatch.Restart();
+
+            Console.Write("Problem 25: ");
+
+            Console.Write(Math.Ceiling((Math.Log(10) * 999 + (Math.Log(5) / 2)) / Math.Log((1 + Math.Sqrt(5)) / 2)));
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
