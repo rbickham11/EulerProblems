@@ -19,6 +19,11 @@ namespace EulerProblems
             problem23();
             problem24();
             problem25();
+            problem26();
+            //problem27();
+            //problem28();
+            //problem29();
+            //problem30();
         }
 
         public void problem21() //Evaluate the sum of all the amicable numbers under 10000.
@@ -172,6 +177,41 @@ namespace EulerProblems
             Console.Write("Problem 25: ");
 
             Console.Write(Math.Ceiling((Math.Log(10) * 999 + (Math.Log(5) / 2)) / Math.Log((1 + Math.Sqrt(5)) / 2)));
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem26() //Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
+        {
+            stopWatch.Restart();
+            limit = 1000;
+            int i, thisCycle, remainder;
+            int longCycle = 0;
+            int maxCycle = 0;
+            BitArray remainders;
+
+            Console.Write("Problem 26: ");
+            for (i = (int)limit - 1; i > 1; i--)
+            {
+                if (longCycle > i)
+                    break;
+                remainders = new BitArray(i);
+                thisCycle = 0;
+                remainder = 1;
+                while (remainders[remainder] == false && remainder != 0)
+                {
+                    remainders[remainder] = true;
+                    remainder = (remainder * 10) % i;
+                    thisCycle++;
+                }
+
+                if (thisCycle > longCycle)
+                {
+                    longCycle = thisCycle;
+                    maxCycle = i;
+                }
+            }
+            Console.Write(maxCycle);
+            stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
