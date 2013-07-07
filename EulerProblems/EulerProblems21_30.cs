@@ -20,7 +20,7 @@ namespace EulerProblems
             problem24();
             problem25();
             problem26();
-            //problem27();
+            problem27();
             //problem28();
             //problem29();
             //problem30();
@@ -211,6 +211,96 @@ namespace EulerProblems
                 }
             }
             Console.Write(maxCycle);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public void problem27() //Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0.
+        {
+            stopWatch.Restart();
+
+            int a, n;
+            int i = 0;
+            int maxCoefs = 0;
+            int maxN = 0;
+            var primeList = getPrimes(20000);
+            Console.Write("Problem 27: ");
+
+            for (a = -999; a < 1000; a += 2)
+            {
+                i = 0;
+                while (primeList[i] < 1000)
+                {
+                    n = 0;
+                    while (isPrime((int)(Math.Pow(n, 2) + a * n + primeList[i]), ref primeList))
+                        n++;
+                    if (n > maxN)
+                    {
+                        maxN = n;
+                        maxCoefs = a * primeList[i];
+                    }
+                    i++;
+                }
+            }
+            for (a = -998; a < 999; a += 2)
+            {
+                n = 0;
+                while (isPrime((int)(Math.Pow(n, 2) + a * n + 2), ref primeList))
+                    n++;
+                if (n > maxN)
+                {
+                    maxN = n;
+                    maxCoefs = a * primeList[i];
+                }
+            }
+
+            Console.Write(maxCoefs);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public List<int> getPrimes(int n)
+        {
+            BitArray notPrime = new BitArray(n + 1);
+            List<int> primeList = new List<int>();
+            int i, j;
+
+            for (i = 2; i <= n; i++)
+            {
+                if (!notPrime.Get(i))
+                    primeList.Add(i);
+                for (j = i * 2; j <= n; j += i)
+                    notPrime.Set(j, true);
+            }
+        
+            return primeList;
+        }
+
+        public bool isPrime(int n, ref List<int> primeList)
+        {
+            for(int i = 0; primeList[i] <= n; i++)
+                if(primeList[i] == n)
+                    return true;
+            return false;
+        }
+
+        public void problem28() //What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
+        {
+            stopWatch.Restart();
+            limit = 1001 * 1001;
+            int cornerDiff = 2;
+            int sum = 1;
+            int thisNum = 1;
+
+            Console.Write("Problem 28: ");
+            for(cornerDiff = 2; thisNum != limit; cornerDiff += 2)
+                for (int i = 0; i < 4; i++)
+                {
+                    thisNum += cornerDiff;
+                    sum += thisNum;
+                }
+
+            Console.Write(sum);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
