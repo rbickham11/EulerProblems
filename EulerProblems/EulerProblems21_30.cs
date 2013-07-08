@@ -268,9 +268,11 @@ namespace EulerProblems
             for (i = 2; i <= n; i++)
             {
                 if (!notPrime.Get(i))
+                {
                     primeList.Add(i);
-                for (j = i * 2; j <= n; j += i)
-                    notPrime.Set(j, true);
+                    for (j = i * 2; j <= n; j += i)
+                        notPrime.Set(j, true);
+                }
             }
         
             return primeList;
