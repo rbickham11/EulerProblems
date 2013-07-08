@@ -45,6 +45,7 @@
     <Compile Include="EulerProblems11_20.cs" />
     <Compile Include="EulerProblems1_10.cs" />
     <Compile Include="EulerProblems21_30.cs" />
+    <Compile Include="EulerProblems31_40.cs" />
     <Compile Include="EulerProblems61_70.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
