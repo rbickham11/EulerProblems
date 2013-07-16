@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EulerProblems
 {
-    class EulerProblems31_40
+    class EulerProblems31_40 : EulerToolbox
     {
         private long limit;
         private Stopwatch stopWatch = new Stopwatch();
@@ -14,7 +14,7 @@ namespace EulerProblems
             problem31();
             problem32();
             problem33();
-            //problem34();
+            problem34();
             //problem35();
             //problem36();
             //problem37();
@@ -138,22 +138,34 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public int EuclidGCD(int n, int m)
+        public void problem34() //Find the sum of all numbers which are equal to the sum of the factorial of their digits.
         {
-            int temp;
-            if (n < m)
+            stopWatch.Restart();
+            limit = 7 * factorial(9);
+            int i, tempNum, digitSum;
+            int totalSum = 0;
+            int[] factorials = new int[10];
+
+            Console.Write("Problem 34: ");
+            for(i = 0; i < 10; i++)
+                factorials[i] = factorial(i);
+           
+            for (i = 10; i <= limit; i++)
             {
-                temp = n;
-                n = m;
-                m = temp;
+                digitSum = 0;
+                tempNum = i;
+                while (tempNum > 0)
+                {
+                    digitSum += factorials[tempNum % 10];
+                    tempNum /= 10;
+                }
+                if (digitSum == i)
+                     totalSum += i;
             }
-            while (n % m != 0)
-            {
-                temp = n;
-                n = m;
-                m = temp % n;
-            }
-            return m;
+
+            Console.Write(totalSum);
+            stopWatch.Stop();
+            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
         public void problem()

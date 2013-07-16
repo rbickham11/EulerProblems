@@ -5,7 +5,7 @@ using System.IO;
 
 namespace EulerProblems
 {
-    public class EulerProblems11_20
+    public class EulerProblems11_20 : EulerToolbox
     {
         private long sum;
         private long limit;
@@ -156,41 +156,6 @@ namespace EulerProblems
             Console.Write(triangle);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
-        }
-
-        public int numDivisors(long n)
-        {
-            int divCount = 1;
-            int i = 0;
-            int j = 3;
-
-            if (n % 2 == 0)
-            {
-                n /= 2;
-                while (n % 2 == 0)
-                {
-                    i++;
-                    n /= 2;
-                }
-
-                divCount *= (i + 1);
-            }
-
-            while (n != 1)
-            {
-                i = 0;
-                while (n % j == 0)
-                {
-                    i++;
-                    n /= j;
-                }
-                
-                divCount *= (i + 1);
-                j += 2;
-            }
-
-            return divCount;
-
         }
 
         public void problem13() //Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.

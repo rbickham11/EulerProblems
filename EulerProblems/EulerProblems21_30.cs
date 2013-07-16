@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace EulerProblems
 {
-    class EulerProblems21_30
+    class EulerProblems21_30 : EulerToolbox
     {
         private long limit;
         private Stopwatch stopWatch = new Stopwatch();
@@ -163,14 +163,6 @@ namespace EulerProblems
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
 
-        public int factorial(int n)
-        {
-            if (n < 1)
-                return 1;
-            else
-                return n * factorial(n - 1);
-        }
-
         public void problem25() //What is the first term in the Fibonacci sequence to contain 1000 digits?
         {
             stopWatch.Restart();
@@ -258,33 +250,6 @@ namespace EulerProblems
             Console.Write(maxCoefs);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
-        }
-
-        public List<int> getPrimes(int n)
-        {
-            BitArray notPrime = new BitArray(n + 1);
-            List<int> primeList = new List<int>();
-            int i, j;
-
-            for (i = 2; i <= n; i++)
-            {
-                if (!notPrime.Get(i))
-                {
-                    primeList.Add(i);
-                    for (j = i * 2; j <= n; j += i)
-                        notPrime.Set(j, true);
-                }
-            }
-        
-            return primeList;
-        }
-
-        public bool isPrime(int n, ref List<int> primeList)
-        {
-            for(int i = 0; primeList[i] <= n; i++)
-                if(primeList[i] == n)
-                    return true;
-            return false;
         }
 
         public void problem28() //What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
