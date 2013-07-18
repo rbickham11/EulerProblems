@@ -9,23 +9,18 @@ namespace EulerProblems
 {
     class EulerProblems51_60 : EulerToolbox
     {
-        private long limit;
         private Stopwatch stopWatch = new Stopwatch();
         
-        public struct card
-        {
-            public char value, suit;
-        }
-
         public void problem54() // Given a text file containing 1000 poker hands, how many hands does Player 1 win?
         {
             stopWatch.Restart();
             Console.Write("Problem 54: ");
 
             List<string> lines;
-            int i, j, k, distCount, rank;
+            int i, j, k, h1Rank, h2Rank;
+            int h1Wins = 0;
+            int h2Wins = 0;
             List<char> cardVals = new List<char>(){ '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A' };
-            List<string> hands = new List<string>() { "High Card", "Pair", "Two Pair", "Three of a Kind", "Straight", "Flush", "Full House", "Four of a Kind", "Straight Flush" };
             List<char> charValues = new List<char>();
             List<int> h1Values = new List<int>();
             List<int> h2Values = new List<int>();
@@ -40,7 +35,7 @@ namespace EulerProblems
             }
 
             using (StreamReader sr = new StreamReader("poker.txt"))
-                lines = new List<string>(sr.ReadToEnd().Replace("\"", "").Split('\n'));
+                lines = new List<string>(sr.ReadToEnd().Split('\n'));
 
             for (i = 0; i < lines.Count; i++)
             {
@@ -61,34 +56,196 @@ namespace EulerProblems
                 h1Values.Sort();
                 h2Values.Sort();
 
-                distCount = h1Values.Distinct().Count();
+                h1Rank = valueCheck(h1Values);
+                h2Rank = valueCheck(h2Values);
 
-                for (k = 0; k < 2; k++)
+                if (h1Rank == -2 || h2Rank == -2)
                 {
-                    switch (distCount)
-                    {
-                        case 2:
-                            Console.WriteLine(i + " " + k + " Full House or Four of a Kind");
-                            break;
-                        case 3:
-                            Console.WriteLine(i + " " + k + " Two Pair or Three of a Kind");
-                            break;
-                        case 4:
-                            Console.WriteLine(i + " " + k + " Pair");
-                            break;
-                        case 5:
-                            Console.WriteLine(i + " " + k + " High Card or Straight or Flush or Straight Flush");
-                            break;
-                        default:
-                            Console.Write("Invalid Hand");
-                            break;
-                    }
-                    distCount = h2Values.Distinct().Count();
+                    Console.WriteLine("One or more hands are invalid");
+                    continue;
                 }
+                if (h1Rank == -1 || h2Rank == -1)
+                {
+                    if (h1Rank == -1)
+                    {
+                        k = 1;
+                        for (j = 0; j < 5; j++)
+                        {
+                            suits[j] = lines[i][k];
+                            k += 3;
+                        }
+                        h1Rank = suitCheck(h1Values, suits);
+                    }
+                    if (h2Rank == -1)
+                    {
+                        k = 16;
+                        for (j = 0; j < 5; j++)
+                        {
+                            suits[j] = lines[i][k];
+                            k += 3;
+                        }
+                        h2Rank = suitCheck(h2Values, suits);
+                    }
+                }
+                if (h1Rank > h2Rank)
+                    h1Wins++;
+                else if (h1Rank < h2Rank)
+                    h2Wins++;
+                else if (h1Rank == h2Rank)
+                {
+                    if (h1Values.Distinct().Count() != 5)
+                    {
+                        shiftVals(h1Rank, ref h1Values);
+                        shiftVals(h2Rank, ref h2Values);
+                    }
+                    for (j = 4; j >= 0; j--)
+                    {
+                        if (h1Values[j] > h2Values[j])
+                        {
+                            h1Wins++;
+                            break;
+                        }
+                        else if (h1Values[j] < h2Values[j])
+                        {
+                            h2Wins++;
+                            break;
+                        }
+                        if (j == 0)
+                            Console.Write("Chop");
+                    }
+
+                }
+                
             }
 
+            Console.Write(h1Wins);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+        }
+
+        public int valueCheck(List<int> handValues)
+        {
+            int distinctCount = handValues.Distinct().Count();
+
+            switch (distinctCount)
+            {
+                case 2:
+                    if ((handValues[0] != handValues[1]) || (handValues[3] != handValues[4]))
+                        return 7; //Four of a Kind
+                    else
+                        return 6; //Full House
+                case 3:
+                    if ((handValues[0] == handValues[2]) || (handValues[1] == handValues[3]) || (handValues[2] == handValues[4]))
+                        return 3; //Three of a Kind
+                    else
+                        return 2; //Two Pair
+                case 4:
+                    return 1; //Pair
+                case 5:
+                    return -1; //Need to check for Flush (Could also be straight or high card).
+                default:
+                    Console.Write("Invalid Hand");
+                    return -2;
+            }
+        }
+
+        public int suitCheck(List<int> handValues, List<char> suits)
+        {
+            bool isStraight = true;
+            int j = 5;
+            
+            if (handValues[0] == 0 && handValues[1] == 1 && handValues[4] == 12)
+                j = 4;
+            for (int i = 1; i < j; i++)
+            {
+                if (handValues[i] != handValues[i - 1] + 1)
+                {
+                    isStraight = false;
+                    break;
+                }
+            }
+           
+            if (isStraight)
+            {
+                if (suits.Distinct().Count() == 1)
+                    return 8; //Straight Flush
+                else
+                    return 4; //Straight
+            }
+            if (suits.Distinct().Count() == 1)
+                return 5; //Flush
+            else
+                return 0; //High Card
+        }
+
+        public void shiftVals(int rank, ref List<int> handValues)
+        {
+            int duplicate;
+            switch (rank)
+            {
+                case 1: //Pair
+                case 2: //Two Pair
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (handValues[i] == handValues[i + 1])
+                        {
+                            duplicate = handValues[i];
+                            handValues.RemoveRange(i, 2);
+                            handValues.Add(duplicate);
+                            handValues.Add(duplicate);
+                            break;
+                        }
+                    }
+                    if(rank == 1)
+                        break;
+                    
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (handValues[i] == handValues[i + 1])
+                        {
+                            duplicate = handValues[i];
+                            handValues.RemoveRange(i, 2);
+                            handValues.Add(duplicate);
+                            handValues.Add(duplicate);
+                            break;
+                        }
+                    }
+                    break;
+                case 3: //Three of a Kind                  
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (handValues[i] == handValues[i + 2])
+                        {
+                            duplicate = handValues[i];
+                            handValues.RemoveRange(i, 3);
+                            for (int j = 0; j < 3; j++)
+                                handValues.Add(duplicate);
+                            break;
+                        }
+                    }
+                    break;
+                case 6: //Full House
+                    if (handValues[0] == handValues[2])
+                    {
+                        duplicate = handValues[0];
+                        handValues.RemoveRange(0, 3);
+                        for (int j = 0; j < 3; j++)
+                            handValues.Add(duplicate);
+                    }
+                    break;
+                case 7: //Four of a Kind
+                    if (handValues[1] != handValues[4])
+                    {
+                        duplicate = handValues[4]; //(Extra value instead of duplicate here)
+                        handValues.RemoveAt(4);
+                        for (int j = 0; j < 3; j++)
+                            handValues.Insert(0, 4);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("shiftVals invalid hand");
+                    break;
+            }
         }
     }
 }
