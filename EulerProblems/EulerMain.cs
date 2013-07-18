@@ -10,9 +10,10 @@ namespace EulerProblems
             var eu11 = new EulerProblems11_20();
             var eu21 = new EulerProblems21_30();
             var eu31 = new EulerProblems31_40();
+            var eu51 = new EulerProblems51_60();
             var eu61 = new EulerProblems61_70();
 
-            eu31.problem34();
+            eu51.problem54();
             Console.ReadKey();
         }
     }
