@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace EulerProblems
 {
-    public class EulerProblems1_10
+    public class Euler1_10
     {
         private long sum;
         private long limit;

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EulerProblems
 {
-    class EulerProblems51_60 : EulerToolbox
+    class Euler51_60 : EulerToolbox
     {
         private Stopwatch stopWatch = new Stopwatch();
         

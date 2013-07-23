@@ -5,7 +5,7 @@ using System.IO;
 
 namespace EulerProblems
 {
-    public class EulerProblems11_20 : EulerToolbox
+    public class Euler11_20 : EulerToolbox
     {
         private long sum;
         private long limit;

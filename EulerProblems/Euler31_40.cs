@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EulerProblems
 {
-    class EulerProblems31_40 : EulerToolbox
+    class Euler31_40 : EulerToolbox
     {
         private long limit;
         private Stopwatch stopWatch = new Stopwatch();

@@ -42,12 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EulerMain.cs" />
-    <Compile Include="EulerProblems11_20.cs" />
-    <Compile Include="EulerProblems1_10.cs" />
-    <Compile Include="EulerProblems21_30.cs" />
-    <Compile Include="EulerProblems31_40.cs" />
-    <Compile Include="EulerProblems51_60.cs" />
-    <Compile Include="EulerProblems61_70.cs" />
+    <Compile Include="Euler11_20.cs" />
+    <Compile Include="Euler1_10.cs" />
+    <Compile Include="Euler21_30.cs" />
+    <Compile Include="Euler31_40.cs" />
+    <Compile Include="Euler51_60.cs" />
+    <Compile Include="Euler61_70.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EulerToolbox.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ using System.IO;
 
 namespace EulerProblems
 {
-    public  class EulerProblems61_70
+    public  class Euler61_70
     {
         private  Stopwatch stopWatch = new Stopwatch();
 
