@@ -75,7 +75,7 @@ namespace EulerProblems
             Console.Write("Problem 3: ");
 
             int max = 1;
-            int loopMax = (int)Math.Sqrt(limit) + 10;
+            int loopMax = (int)Math.Sqrt(limit);
 
             BitArray bitArr = new BitArray(loopMax);
             bitArr.Set(2, false);
