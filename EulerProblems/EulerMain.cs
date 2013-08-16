@@ -13,7 +13,7 @@ namespace EulerProblems
             var eu51 = new Euler51_60();
             var eu61 = new Euler61_70();
 
-            eu51.problem54();
+            eu1.problem7();
             Console.ReadKey();
         }
     }

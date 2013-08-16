@@ -228,8 +228,8 @@ namespace EulerProblems
 
             limit = 10001;
             
-            int num = 2;
-            int primeCount = 0;
+            int num = 3;
+            int primeCount = 1;
             int i;
             bool breakBoth = false;
 
@@ -237,7 +237,7 @@ namespace EulerProblems
 
             while (primeCount < limit)
             {
-                for (i = 2; i <= num / 2; i++)
+                for (i = 3; i <= Math.Sqrt(num); i++)
                 {
                     if (num % i == 0)
                     {
@@ -248,10 +248,10 @@ namespace EulerProblems
                 }
                 if (!breakBoth)
                     primeCount++;
-                num++;
+                num += 2;
                 breakBoth = false;
             }
-            Console.Write(num - 1);
+            Console.Write(num - 2);
             stopWatch.Stop();
             Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
         }
