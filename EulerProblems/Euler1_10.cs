@@ -237,7 +237,7 @@ namespace EulerProblems
 
             while (primeCount < limit)
             {
-                for (i = 3; i <= Math.Sqrt(num); i++)
+                for (i = 3; i <= Math.Sqrt(num); i += 2)
                 {
                     if (num % i == 0)
                     {
