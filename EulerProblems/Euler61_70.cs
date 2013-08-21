@@ -46,7 +46,7 @@ namespace EulerProblems
 
             Console.Write(pyramid[0, 0]);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
     }
 }

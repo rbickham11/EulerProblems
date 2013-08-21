@@ -39,7 +39,7 @@ namespace EulerProblems
            
             Console.Write(sum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
         public void problem2() //By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
         {
@@ -64,7 +64,7 @@ namespace EulerProblems
 
             Console.Write(sum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
         public void problem3() //What is the largest prime factor of the number 600851475143 ?
         {
@@ -104,7 +104,7 @@ namespace EulerProblems
 
             Console.Write(max);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem4() //Find the largest palindrome made from the product of two 3-digit numbers.
@@ -157,7 +157,7 @@ namespace EulerProblems
                 Console.Write(max);
 
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem5()  //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
@@ -197,7 +197,7 @@ namespace EulerProblems
 
             Console.Write(num);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem6() //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
@@ -219,7 +219,7 @@ namespace EulerProblems
 
             Console.Write(sqsum-sumsq);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem7() //What is the 10001st prime number?
@@ -253,7 +253,7 @@ namespace EulerProblems
             }
             Console.Write(num - 2);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem8() //Find the greatest product of five consecutive digits in the 1000-digit number.
@@ -301,7 +301,7 @@ namespace EulerProblems
 
             Console.Write(maxProduct);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem9() //There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc.
@@ -354,7 +354,7 @@ namespace EulerProblems
             Console.Write(product);
 
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem10()   //Find the sum of all the primes below two million.
@@ -379,7 +379,7 @@ namespace EulerProblems
 
             Console.Write(sum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
    }

@@ -92,7 +92,7 @@ namespace EulerProblems
             Console.Write(maxProduct);
 
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void rightProd(int[,] table, ref int i, ref int j, ref int product, ref int maxProduct)
@@ -155,7 +155,7 @@ namespace EulerProblems
             triangle = (n * (n + 1)) / 2;
             Console.Write(triangle);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem13() //Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
@@ -279,7 +279,7 @@ namespace EulerProblems
             result = sum.ToString();
             Console.Write(result.Substring(0, 10));
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem14() //Which starting number, under one million, produces the longest collatz sequence?
@@ -316,7 +316,7 @@ namespace EulerProblems
 
             Console.Write(highChain);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem15() //Starting in the top left corner of a 2x2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
@@ -340,7 +340,7 @@ namespace EulerProblems
 
             Console.Write(grid[limit, limit]);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem16() //What is the sum of the digits of the number 2^1000?
@@ -380,7 +380,7 @@ namespace EulerProblems
 
             Console.Write(digitSum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem17() //If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
@@ -445,7 +445,7 @@ namespace EulerProblems
 
             Console.Write(letterSum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem18() //Find the maximum total from top to bottom of the triangle
@@ -481,7 +481,7 @@ namespace EulerProblems
 
             Console.Write(pyramid[0, 0]);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem19() //How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
@@ -500,7 +500,7 @@ namespace EulerProblems
 
             Console.Write(sundays);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem20() //Find the sum of the digits in the number 100!
@@ -545,7 +545,7 @@ namespace EulerProblems
 
             Console.Write(digitSum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
     }
 }

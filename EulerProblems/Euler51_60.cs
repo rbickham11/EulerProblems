@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -120,7 +119,7 @@ namespace EulerProblems
 
             Console.Write(h1Wins);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public int valueCheck(List<int> handValues)

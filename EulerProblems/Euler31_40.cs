@@ -39,7 +39,7 @@ namespace EulerProblems
 
             Console.Write(ways[limit]);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem32() //Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
@@ -84,7 +84,7 @@ namespace EulerProblems
             }
             Console.Write(sum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public bool isPandigital(long n)
@@ -135,7 +135,7 @@ namespace EulerProblems
 
             Console.Write(denProduct / EuclidGCD(numProduct, denProduct));
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem34() //Find the sum of all numbers which are equal to the sum of the factorial of their digits.
@@ -165,7 +165,7 @@ namespace EulerProblems
 
             Console.Write(totalSum);
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
         public void problem()
@@ -173,7 +173,7 @@ namespace EulerProblems
             stopWatch.Restart();
             Console.Write("Problem : ");
             stopWatch.Stop();
-            Console.WriteLine("  (" + stopWatch.ElapsedMilliseconds + "ms" + ")");
+            Console.WriteLine(" ({0}ms)", stopWatch.ElapsedMilliseconds);
         }
 
     }
